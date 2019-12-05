@@ -30,7 +30,7 @@ class ReservationListItem extends Component {
         }
       }
     }
-    return changed;
+    return changed || this.props.theme.agendaTodayColor !== nextProps.theme.agendaTodayColor;
   }
 
   renderDate(date, item) {
@@ -38,11 +38,12 @@ class ReservationListItem extends Component {
       return this.props.renderDay(date ? xdateToData(date) : undefined, item);
     }
     const today = dateutils.sameDate(date, XDate()) ? this.styles.today : undefined;
+    const todayTheme = dateutils.sameDate(date, XDate()) ? {color: this.props.theme.agendaTodayColor} : undefined;
     if (date) {
       return (
         <View style={this.styles.day}>
-          <Text allowFontScaling={false} style={[this.styles.dayNum, today]}>{date.getDate()}</Text>
-          <Text allowFontScaling={false} style={[this.styles.dayText, today]}>{XDate.locales[XDate.defaultLocale].dayNamesShort[date.getDay()]}</Text>
+          <Text allowFontScaling={false} style={[this.styles.dayNum, today, todayTheme]}>{date.getDate()}</Text>
+          <Text allowFontScaling={false} style={[this.styles.dayText, today, todayTheme]}>{XDate.locales[XDate.defaultLocale].dayNamesShort[date.getDay()]}</Text>
         </View>
       );
     } else {

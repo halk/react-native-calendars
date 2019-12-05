@@ -118,7 +118,7 @@ export default class AgendaView extends Component {
   }
 
   calendarOffset() {
-    return 90 - (this.viewHeight / 2);
+    return 96 - (this.viewHeight / 2);
   }
 
   initialScrollPadPosition() {
@@ -416,7 +416,7 @@ export default class AgendaView extends Component {
               markingType={this.props.markingType}
               removeClippedSubviews={this.props.removeClippedSubviews}
               onDayPress={this._chooseDayFromCalendar.bind(this)}
-              scrollingEnabled={this.state.calendarScrollable}
+              scrollEnabled={this.state.calendarScrollable}
               hideExtraDays={this.state.calendarScrollable}
               firstDay={this.props.firstDay}
               monthFormat={this.props.monthFormat}

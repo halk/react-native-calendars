@@ -39,7 +39,7 @@ class Day extends Component {
   }
 
   shouldComponentUpdate(nextProps) {
-    return shouldUpdate(this.props, nextProps, ['state', 'children', 'marking', 'onPress', 'onLongPress']);
+    return shouldUpdate(this.props, nextProps, ['state', 'children', 'marking', 'onPress', 'onLongPress', 'theme']);
   }
 
   render() {
@@ -68,6 +68,7 @@ class Day extends Component {
 
     if (marking.selected) {
       containerStyle.push(this.style.selected);
+      containerStyle.push({backgroundColor: this.props.theme.selectedDayBackgroundColor});
       if (marking.selectedColor) {
         containerStyle.push({backgroundColor: marking.selectedColor});
       }
@@ -78,6 +79,7 @@ class Day extends Component {
     } else if (this.props.state === 'today') {
       containerStyle.push(this.style.today);
       textStyle.push(this.style.todayText);
+      textStyle.push({color: this.props.theme.agendaTodayColor});
       dotStyle.push(this.style.todayDot);
     }
 
